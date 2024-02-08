@@ -15,14 +15,16 @@ namespace BusCurs.Presenter
         public MyPresenter(IMyVIew view) 
         {
             _view = view;
+            InitializeComponent();
         }    
         private void InitializeComponent()
         {
-            Button butt = new Button();
-            butt.Text = "dima";
-            butt.Size = new System.Drawing.Size(200, 200);
-            _view.InputControl = butt;
-            //_view.InputControl = new MyChart();
+            _view.InputControl = new MyChart();
+        }
+
+        private void Start(object args,EventHandler e)
+        {
+
         }
     }
 }

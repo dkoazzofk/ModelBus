@@ -2,6 +2,9 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion Condition="'$(MSBuildProjectExtension)'=='.csproj'">preview</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{104679E0-AEEC-422F-A5B4-6EEED6C53E41}</ProjectGuid>
@@ -47,9 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Bus.cs" />
+    <Compile Include="Model\BusStation.cs" />
     <Compile Include="Model\MyChart.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Model\NormalDistribution.cs" />
+    <Compile Include="Model\Randoms.cs" />
+    <Compile Include="Model\Road.cs" />
+    <Compile Include="Model\Source.cs" />
     <Compile Include="Presenter\MyPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

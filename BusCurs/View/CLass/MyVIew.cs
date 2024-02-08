@@ -1,4 +1,5 @@
-﻿using BusCurs.View.Interface;
+﻿using BusCurs.Model;
+using BusCurs.View.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace BusCurs.View.CLass
     public class MyVIew: Form, IMyVIew
     {
 
-        public Button InputControl { set => Controls.Add(value); }
+        public MyChart InputControl { set => Controls.Add(value); }
         public MyVIew()
         {
             InitializeComponent();
