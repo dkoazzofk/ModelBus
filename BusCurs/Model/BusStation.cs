@@ -10,10 +10,9 @@ namespace BusCurs.Model
     {
         public int countHumans { get; set; }
         public Bus bus { get; set; }
-        public Randoms randoms { get; set; } = new Randoms();
         public BusStation()
         {
-            countHumans = (int)randoms.Parametre_ravn(20, 40);
+            countHumans = (int)Randoms.Parametre_ravn(20, 40);
         }
         public Bus InputHumanBus(Bus bus)
         {

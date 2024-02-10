@@ -13,7 +13,6 @@ namespace BusCurs.Presenter
     public class MyPresenter
     {
         IMyVIew _view { get; set; }
-        Random random = new Random();
         MyChart chart = new MyChart();
         public MyPresenter(IMyVIew view) 
         {

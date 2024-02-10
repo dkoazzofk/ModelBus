@@ -11,10 +11,9 @@ namespace BusCurs.Model
         public Queue<Bus> sources { get; set; } = new Queue<Bus>();
         public int time { get; set; } = 0;
 
-        public Randoms Random { get; set; } = new Randoms();
         public Source() 
         {
-            sources.Enqueue(new Bus(Random.Parametre_ravn(30, 60),Random.Parametre_ravn(10, 40)));
+            sources.Enqueue(new Bus(Randoms.Parametre_ravn(30, 60),Randoms.Parametre_ravn(10, 40)));
         }
         public float Calculate_X(Bus bus)
         {
