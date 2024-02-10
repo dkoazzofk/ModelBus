@@ -13,8 +13,6 @@ namespace BusCurs.Model
         {
             Location = new System.Drawing.Point(10, 10);
             Size = new System.Drawing.Size(400,400);
-            Series.Add("Bus");
-            Series["Bus"].ChartType = SeriesChartType.Column;
             ChartAreas.Add("ChartArea1");
             ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;

@@ -12,11 +12,13 @@ namespace BusCurs.Model
         public Bus bus { get; set; }
         public BusStation()
         {
-            countHumans = (int)Randoms.Parametre_ravn(20, 40);
+            Random rand = new Random();
+            //countHumans = (int)Randoms.Parametre_ravn(20, 40);
+            countHumans = rand.Next(50,60);
         }
         public Bus InputHumanBus(Bus bus)
         {
-            bus.InputBus(countHumans);
+            countHumans = bus.InputBus(countHumans);
             return bus;
         }
         
