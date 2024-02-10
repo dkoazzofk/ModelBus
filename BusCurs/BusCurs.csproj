@@ -53,6 +53,7 @@
     <Compile Include="Model\Bus.cs" />
     <Compile Include="Model\BusStation.cs" />
     <Compile Include="Model\Human.cs" />
+    <Compile Include="Model\Interface\IRoadBus.cs" />
     <Compile Include="Model\MyChart.cs">
       <SubType>Component</SubType>
     </Compile>

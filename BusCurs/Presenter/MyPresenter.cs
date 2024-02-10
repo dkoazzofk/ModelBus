@@ -1,4 +1,5 @@
 ﻿using BusCurs.Model;
+using BusCurs.Model.Interface;
 using BusCurs.View.Interface;
 using System;
 using System.Collections.Generic;
@@ -38,24 +39,28 @@ namespace BusCurs.Presenter
         {
             chart.Series.Clear();
             Source source = new Source();
-            Road road = new Road();
-            BusStation busStation = new BusStation();
-
+            IRoadBus[] bus = Route();
             for (int i = 1; i < 5; i++)
             {
                 float speed = Randoms.Parametre_ravn(40,120) * 16.67f;
-                int member = (int)Randoms.Parametre_ravn(20, 40);
-                Bus bus_start = new Bus(speed,member);
-                source.sources.Enqueue(bus_start);
-
-                road.BusInput(source.sources.Dequeue());
-                Bus bus_end = busStation.InputHumanBus(road.BusOutput());
+                int member = (int)Randoms.Parametre_ravn(40, 100);
+                 
 
 
                 chart.Series.Add($"{i}");
                 chart.Series[$"{i}"].ChartType = SeriesChartType.Column;
                 chart.Series[$"{i}"].Points.AddXY(i, bus_end._time);
             }
+        }
+        public IRoadBus[] Route()
+        {
+            IRoadBus[] roadBuses = new IRoadBus[7];
+            for(int i = 0; i < 7; i++)
+            {
+                if (i % 2 == 0) roadBuses[i] = new Road();
+                else roadBuses[i] = new BusStation();
+            }
+            return roadBuses;
         }
     }
 }
