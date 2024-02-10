@@ -10,12 +10,6 @@ namespace BusCurs.Model
     {
         NormalDistribution r = new NormalDistribution();
         public Random r_ = new Random();
-        public float Parametre(float min, float max)
-        {
-            float result = (float)(r.NextDouble());
-            return (float)(min + Math.Abs(result) * (max - min)); // очень сложный алгоритм
-        }
-
         public float Parametre_exp(float min, float max)//экспоненциальное распределение
         {
             float result = ((float)(-Math.Log(r_.NextDouble())) / 2.0f);

@@ -10,6 +10,7 @@ namespace BusCurs.View.Interface
 {
     public interface IMyVIew
     {
-        MyChart InputControl { set; }
+        MyChart InputControlChart { set; }
+        Button InputControlButton { set; }
     }
 }

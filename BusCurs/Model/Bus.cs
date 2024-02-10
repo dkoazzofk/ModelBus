@@ -8,23 +8,26 @@ namespace BusCurs.Model
 {
     public class Bus
     {
-        public int member { get; set; }
+        public int number { get; set; }
+        public float _member { get; set; }
 
-        public int speed {  get; set; }
+        public float _speed {  get; set; }
 
-        public Bus() 
+        public Bus(float speed, float member) 
         {
-
-        }    
-
-        public void InputBus()
-        {
-
+            _speed = speed;
+            _member = member;
         }
 
-        public void Move()
-        {
+        public void InputBus(int human) => _member += human;
 
+        public float Calculate_X(Bus bus)
+        {
+            return bus._member;
+        }
+        public float Calculate_Y(Bus bus)
+        {
+            return bus._speed;
         }
 
     }

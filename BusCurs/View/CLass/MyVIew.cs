@@ -12,7 +12,9 @@ namespace BusCurs.View.CLass
     public class MyVIew: Form, IMyVIew
     {
 
-        public MyChart InputControl { set => Controls.Add(value); }
+        public MyChart InputControlChart { set => Controls.Add(value); }
+        public Button InputControlButton { set => Controls.Add(value); }
+
         public MyVIew()
         {
             InitializeComponent();

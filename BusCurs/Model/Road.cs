@@ -8,15 +8,13 @@ namespace BusCurs.Model
 {
     public class Road
     {
-        Queue<Bus> queue { get; set; } = new Queue<Bus>();
-        public void BusInput() 
+        public  Queue<Bus> queue { get; set; } = new Queue<Bus>();
+        public void BusInput(Bus bus)
         {
 
+            queue.Enqueue(bus);
         }
-        public void BusOutput() 
-        {
-
-        }
+        public Bus BusOutput() { return queue.Dequeue(); }
         //Шансы поломки автобуса
     }
 }
