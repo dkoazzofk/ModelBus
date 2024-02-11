@@ -22,7 +22,6 @@ namespace BusCurs.Model
 
         public int InputBus(int human)
         { 
-
             if (_member != 0)
             {
                 int[] tmp = Calculate(_member, human);
