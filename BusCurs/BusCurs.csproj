@@ -60,7 +60,6 @@
     <Compile Include="Model\NormalDistribution.cs" />
     <Compile Include="Model\Randoms.cs" />
     <Compile Include="Model\Road.cs" />
-    <Compile Include="Model\Source.cs" />
     <Compile Include="Presenter\MyPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

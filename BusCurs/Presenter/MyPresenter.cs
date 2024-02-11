@@ -38,18 +38,21 @@ namespace BusCurs.Presenter
         private void Start(object args,EventArgs e)
         {
             chart.Series.Clear();
-            Source source = new Source();
-            IRoadBus[] bus = Route();
-            for (int i = 1; i < 5; i++)
+            IRoadBus[] buses = Route();
+            for (int i = 1; i < 10; i++)
             {
                 float speed = Randoms.Parametre_ravn(40,120) * 16.67f;
-                int member = (int)Randoms.Parametre_ravn(40, 100);
-                 
+                int member = (int)Randoms.Parametre_ravn(40, 120);
+                Bus bus = new Bus(speed, member);
 
+                for(int  j = 0; j < buses.Length; j++) 
+                    bus = buses[j].InputBus(bus);
+                for (int j = buses.Length-1; j >= 0; j--)
+                    bus = buses[j].InputBus(bus);
 
                 chart.Series.Add($"{i}");
                 chart.Series[$"{i}"].ChartType = SeriesChartType.Column;
-                chart.Series[$"{i}"].Points.AddXY(i, bus_end._time);
+                chart.Series[$"{i}"].Points.AddXY(i, bus._time);
             }
         }
         public IRoadBus[] Route()

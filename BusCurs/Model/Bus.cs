@@ -10,7 +10,7 @@ namespace BusCurs.Model
     public class Bus
     {
         public int _member { get; set; }
-
+        public Queue<Human> humans { get; set; } = new Queue<Human>();
         public float _speed {  get; set; }
         public float _time {  get; set; } = 0 ;
 
@@ -31,6 +31,15 @@ namespace BusCurs.Model
                 return tmp[1];
             }
             else return human;
+        }
+        public Queue<Human> InputBus(Queue<Human> human)
+        {
+            for (; human != null || humans.Count != 16;)
+            {
+                humans.Enqueue(human.Dequeue());
+                _time += Randoms.Parametre_ravn(0.3f,0.9f);
+            }
+            return human;
         }
 
         public int[] Calculate(int memberHuman, int human)

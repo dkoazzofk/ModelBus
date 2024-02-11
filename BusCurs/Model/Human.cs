@@ -8,6 +8,6 @@ namespace BusCurs.Model
 {
     public class Human
     {
-        public string numberStation {  get; set; }
+        public int numberStation {  get; set; }
     }
 }

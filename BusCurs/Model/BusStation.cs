@@ -10,6 +10,7 @@ namespace BusCurs.Model
     public class BusStation : IRoadBus
     {
         public int countHumans { get; set; }
+        public Queue<Human> humans { get; set; } = new Queue<Human>();
         public Bus bus { get; set; }
         public BusStation()
         {
