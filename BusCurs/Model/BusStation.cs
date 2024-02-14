@@ -10,30 +10,21 @@ namespace BusCurs.Model
 {
     public class BusStation : IRoadBus
     {
-        public int countHumans { get; set; }
-        public Queue<Human> humans { get; set; }
+        public int _numberStation {  get; set; }
+        public Queue<Human> _humans { get; set; }
         public Bus bus { get; set; }
-        public BusStation()
+        public BusStation(Queue<Human> humans, int numberStation)
         {
-            Random rand = new Random();
-            //countHumans = (int)Randoms.Parametre_ravn(20, 40);
-            countHumans = rand.Next(50,60);
-            humans = new Queue<Human>(countHumans);
+            _humans = humans;
+            _numberStation = numberStation; 
         }
         public Bus InputBus(Bus bus)
         {
-            humans = bus.InputBus(humans);
+            _humans = bus.InputBus(_humans);
+            bus.OutputBus(_numberStation);
             return bus;
         }
 
-        private void FullQue()
-        {
-            for (int i = 0; i < countHumans;i++)
-            {
-                Human human = new Human();
-                humans.Enqueue(humans.Dequeue());
-            }
-        }
-        
+
     }
 }

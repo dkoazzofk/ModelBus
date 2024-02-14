@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BusCurs.View.CLass
 {
@@ -13,6 +14,7 @@ namespace BusCurs.View.CLass
     {
 
         public MyChart InputControlChart { set => Controls.Add(value); }
+        public TextBox InputControlTextBox { set => Controls.Add(value); }
         public Button InputControlButton { set => Controls.Add(value); }
 
         public MyVIew()

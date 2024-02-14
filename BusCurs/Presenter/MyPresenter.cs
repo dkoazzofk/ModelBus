@@ -14,8 +14,8 @@ namespace BusCurs.Presenter
 {
     public class MyPresenter
     {
-        IMyVIew _view { get; set; }
-        MyChart chart = new MyChart();
+        public IMyVIew _view { get; set; }
+        public MyChart chart = new MyChart();
         public MyPresenter(IMyVIew view) 
         {
             _view = view;
@@ -26,23 +26,36 @@ namespace BusCurs.Presenter
             _view.InputControlChart = chart;
             Button butt = new Button
             {
-                Size = new Size(100, 100),
+                Size = new Size(100, 50),
                 Text = "Старт",
-                Location = new Point(420,10)
+                Location = new Point(420,360)
             };
             butt.Click += new EventHandler(Start);
             _view.InputControlButton = butt;
-
+            TextBox text = new TextBox 
+            { 
+                Size = new Size(100, 50),
+                Location = new Point(420,20)
+            };
+            _view.InputControlTextBox = text;
+            Label label = new Label
+            {
+                Text = "Количество остановок",
+                Size = new Size(50, 50),
+                Location = new Point(420, 10)
+            };
         }
 
         private void Start(object args,EventArgs e)
         {
             chart.Series.Clear();
+
             IRoadBus[] buses = Route();
-            for (int i = 1; i < 10; i++)
+            chart.Series.Clear();
+            for (int i = 0; i < 10; i++)
             {
-                float speed = Randoms.Parametre_ravn(40,120) * 16.67f;
-                int member = (int)Randoms.Parametre_ravn(40, 120);
+                double speed = (double)Randoms.Parametre_ravn(40f,120f) * 16.67f;
+                int member = (int)Randoms.Parametre_ravn(20f, 40f);
                 Bus bus = new Bus(speed, member);
 
                 for(int  j = 0; j < buses.Length; j++) 
@@ -55,15 +68,26 @@ namespace BusCurs.Presenter
                 chart.Series[$"{i}"].Points.AddXY(i, bus._time);
             }
         }
-        public IRoadBus[] Route()
+        private IRoadBus[] Route()
         {
-            IRoadBus[] roadBuses = new IRoadBus[7];
-            for(int i = 0; i < 7; i++)
+            IRoadBus[] roadBuses = new IRoadBus[6];
+            for(int i = 0; i < 6; i++)
             {
                 if (i % 2 == 0) roadBuses[i] = new Road();
-                else roadBuses[i] = new BusStation();
+                else roadBuses[i] = new BusStation(CreatePeople(),i);
             }
             return roadBuses;
+        }
+
+        private Queue<Human> CreatePeople()
+        {
+            Random rand = new Random();
+            Queue<Human> people = new Queue<Human>();
+            for(int i = 0; i < 16; i++)
+            {
+                people.Enqueue(new Human(rand.Next(1,6)));
+            }
+            return people;
         }
     }
 }

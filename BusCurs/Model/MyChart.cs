@@ -16,6 +16,8 @@ namespace BusCurs.Model
             ChartAreas.Add("ChartArea1");
             ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
+            Series.Add("1");
+            Series[0].ChartType = SeriesChartType.Column;
         }
     }
 }

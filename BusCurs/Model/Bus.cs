@@ -9,56 +9,41 @@ namespace BusCurs.Model
 {
     public class Bus
     {
-        public int _member { get; set; }
-        public Queue<Human> humans { get; set; } = new Queue<Human>();
-        public float _speed {  get; set; }
+        public Queue<Human> _humans { get; set; }
+        int _memberHumans { get; set; }
+        public double _speed {  get; set; }
         public float _time {  get; set; } = 0 ;
 
-        public Bus(float speed, int member) 
+        public Bus(double speed, int memberHumans) 
         {
+            _memberHumans = memberHumans;
+            _humans = new Queue<Human>(memberHumans);
             _speed = speed;
-            _member = member;
-        }
-
-        public int InputBus(int human)
-        { 
-            if (_member != 0)
-            {
-                int[] tmp = Calculate(_member, human);
-                _member = tmp[0];                  
-                _time += Randoms.Parametre_ravn(1,5)*(human - tmp[1]);
-                return tmp[1];
-            }
-            else return human;
         }
         public Queue<Human> InputBus(Queue<Human> human)
-        {
-            for (; human != null || humans.Count != 16;)
+        {   
+            while (_humans.Count != _memberHumans)
             {
-                humans.Enqueue(human.Dequeue());
-                _time += Randoms.Parametre_ravn(0.3f,0.9f);
+                if (!human.Any())
+                    return human;
+                _humans.Enqueue(human.Dequeue());
+                _time += Randoms.Parametre_ravn(0.2f,1.6f);
             }
             return human;
         }
 
-        public int[] Calculate(int memberHuman, int human)
+        public void OutputBus(int numberStation)
         {
-            int[] tmp = [memberHuman,human];
-            for (int i = 0; tmp[0] > 0 || tmp[1] > 0 ; i++)
+            Queue<Human> tmp = new Queue<Human> (_memberHumans);
+            while(_humans.Count != 0)
             {
-                if (tmp[0] == 0 || tmp[1] == 0) break;
-                tmp[0] -= 1;
-                tmp[1] -= 1;
+                if(_humans.Peek().numberStation != numberStation) 
+                    tmp.Enqueue(_humans.Dequeue());
+                else
+                    _humans.Dequeue();
             }
-            return tmp;
+            _humans = tmp;
         }
 
-        public static float Parametre_exp(float min, float max)//экспоненциальное распределение
-        {
-            NormalDistribution r = new NormalDistribution();
-            Random r_ = new Random();
-            float result = ((float)(-Math.Log(r_.NextDouble())) / 2.0f);
-            return (float)(min + result * (max - min));
-        }
     }
 }
